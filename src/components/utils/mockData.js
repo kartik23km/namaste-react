@@ -1,57 +1,4 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-
-// const heading = React.createElement("h1", {}, "hello")
-
-// const jsxHeading = <h1>Heading</h1>
-
-// const Title = () => {
-//     return <h2>This is title</h2>
-// }
-
-// const HeadingComponent = () => {
-//     return (
-
-//         <div><Title /><h1>Heading from component</h1></div>
-//     )
-// }
-
-const Header = () => (
-    <div className="header">
-        <div className="logo-container">
-            <img className="logo" src="https://img.freepik.com/premium-vector/food-ordering-app-logo-with-points-fork-shapes-center_666184-195.jpg" />
-        </div>
-        <div className="nav-container">
-            <ul className="nav-items">
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Cart</li>
-
-            </ul>
-        </div>
-    </div>
-)
-
-
-
-const ResturantCard = (props) => {
-    const { resData } = props
-    const { name, avgRating, cloudinaryImageId, cuisines, costForTwo, sla } = resData?.info
-
-    return (
-        <div className="res-card">
-            <img className="res-card-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="res-logo" />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(",")}</h4>
-            <h4>{avgRating}</h4>
-            <h4>{sla.deliveryTime} Minutes</h4>
-            <h4>{costForTwo}</h4>
-        </div>
-    )
-}
-
-const obj = [
+const resData = [
     {
         "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
         "info": {
@@ -586,30 +533,193 @@ const obj = [
             "type": "WEBLINK"
         },
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
-    }]
-
-const Body = () => {
-    return (
-        <div className="body">
-            <div className="search"></div>
-            <div className="res-container">
-                {
-                    obj.map((res) => <ResturantCard key={res.info.id} resData={res} />)
+    },
+    {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        "info": {
+            "id": "355351",
+            "name": "Grameen Kulfi",
+            "cloudinaryImageId": "jiwjgh4rhaobq5ofgrly",
+            "locality": "B K Dutta Market",
+            "areaName": "Rajouri Garden",
+            "costForTwo": "₹120 for two",
+            "cuisines": [
+                "Desserts",
+                "Ice Cream"
+            ],
+            "avgRating": 4.8,
+            "veg": true,
+            "parentId": "12175",
+            "avgRatingString": "4.8",
+            "totalRatingsString": "915",
+            "sla": {
+                "deliveryTime": 15,
+                "lastMileTravel": 2,
+                "serviceability": "SERVICEABLE",
+                "slaString": "15-20 mins",
+                "lastMileTravelString": "2.0 km",
+                "iconType": "ICON_TYPE_EMPTY"
+            },
+            "availability": {
+                "nextCloseTime": "2025-04-22 00:00:00",
+                "opened": true
+            },
+            "badges": {
+                "imageBadges": [
+                    {
+                        "imageId": "bolt/bolt%206.png",
+                        "description": "bolt!"
+                    },
+                    {
+                        "imageId": "v1695133679/badges/Pure_Veg111.png",
+                        "description": "pureveg"
+                    }
+                ]
+            },
+            "isOpen": true,
+            "type": "F",
+            "badgesV2": {
+                "entityBadges": {
+                    "imageBased": {
+                        "badgeObject": [
+                            {
+                                "attributes": {
+                                    "description": "bolt!",
+                                    "imageId": "bolt/bolt%206.png"
+                                }
+                            },
+                            {
+                                "attributes": {
+                                    "description": "pureveg",
+                                    "imageId": "v1695133679/badges/Pure_Veg111.png"
+                                }
+                            }
+                        ]
+                    },
+                    "textBased": {},
+                    "textExtendedBadges": {}
                 }
-            </div>
-        </div>
-    )
-}
+            },
+            "aggregatedDiscountInfoV3": {
+                "header": "60% OFF",
+                "subHeader": "UPTO ₹120"
+            },
+            "orderabilityCommunication": {
+                "title": {},
+                "subTitle": {},
+                "message": {},
+                "customIcon": {}
+            },
+            "differentiatedUi": {
+                "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+                "differentiatedUiMediaDetails": {
+                    "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                    "lottie": {},
+                    "video": {}
+                }
+            },
+            "reviewsSummary": {},
+            "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+            "restaurantOfferPresentationInfo": {},
+            "externalRatings": {
+                "aggregatedRating": {
+                    "rating": "--"
+                }
+            },
+            "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+        },
+        "analytics": {
+            "context": "seo-data-6853bce9-2d45-4876-9909-ad5dcbae1685"
+        },
+        "cta": {
+            "link": "https://www.swiggy.com/city/delhi/grameen-kulfi-b-k-dutta-market-rajouri-garden-rest355351",
+            "text": "RESTAURANT_MENU",
+            "type": "WEBLINK"
+        },
+        "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+    },
+    {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        "info": {
+            "id": "11539",
+            "name": "Sethi Restaurant (Rajouri Garden)",
+            "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/7/8/37c6d493-9720-4126-a4cc-c59782476fe8_11539.ss.jpg",
+            "locality": "Rajouri Garden",
+            "areaName": "DDA Market",
+            "costForTwo": "₹500 for two",
+            "cuisines": [
+                "Chinese",
+                "Mughlai"
+            ],
+            "avgRating": 4.3,
+            "parentId": "559454",
+            "avgRatingString": "4.3",
+            "totalRatingsString": "38K+",
+            "sla": {
+                "deliveryTime": 21,
+                "lastMileTravel": 2.1,
+                "serviceability": "SERVICEABLE",
+                "slaString": "20-25 mins",
+                "lastMileTravelString": "2.1 km",
+                "iconType": "ICON_TYPE_EMPTY"
+            },
+            "availability": {
+                "nextCloseTime": "2025-04-22 00:00:00",
+                "opened": true
+            },
+            "badges": {},
+            "isOpen": true,
+            "type": "F",
+            "badgesV2": {
+                "entityBadges": {
+                    "imageBased": {},
+                    "textBased": {},
+                    "textExtendedBadges": {}
+                }
+            },
+            "aggregatedDiscountInfoV3": {
+                "header": "₹100 OFF",
+                "subHeader": "ABOVE ₹249",
+                "discountTag": "FLAT DEAL"
+            },
+            "orderabilityCommunication": {
+                "title": {},
+                "subTitle": {},
+                "message": {},
+                "customIcon": {}
+            },
+            "differentiatedUi": {
+                "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+                "differentiatedUiMediaDetails": {
+                    "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                    "lottie": {},
+                    "video": {}
+                }
+            },
+            "reviewsSummary": {},
+            "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+            "restaurantOfferPresentationInfo": {},
+            "externalRatings": {
+                "aggregatedRating": {
+                    "rating": "4.0",
+                    "ratingCount": "1.8K+"
+                },
+                "source": "GOOGLE",
+                "sourceIconImageId": "v1704440323/google_ratings/rating_google_tag"
+            },
+            "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+        },
+        "analytics": {
+            "context": "seo-data-6853bce9-2d45-4876-9909-ad5dcbae1685"
+        },
+        "cta": {
+            "link": "https://www.swiggy.com/city/delhi/sethi-restaurant-rajouri-garden-rajouri-garden-dda-market-rest11539",
+            "text": "RESTAURANT_MENU",
+            "type": "WEBLINK"
+        },
+        "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+    }
+]
 
-const AppLayout = () => {
-    return (
-        <div className="app">
-            <Header />
-            <Body />
-        </div>
-    )
-}
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-
-root.render(<AppLayout />)
+export default resData
