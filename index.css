@@ -64,3 +64,21 @@ li {
   height: 400px;
   background-color: #f0f0f0;
 }
+
+.res-menu-container {
+  background-color: #f0f0f0;
+  width: 50%;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 12px;
+}
+
+.loader-resMenu {
+  height: 200px;
+  width: 400px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+}
+a {
+  text-decoration: none;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { API } from "./utils/constants";
+import { Link } from "react-router";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -66,10 +67,13 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-
+        <p>**Some items may break due to uneven API response**</p>
         <div className="res-container">
+          {searchList.length === 0 && <h1>No Content Available</h1>}
           {searchList.map((res) => (
-            <RestaurantCard key={res.info.id} resData={res} />
+            <Link key={res.info.id} to={"/restaurant/" + res?.info?.id}>
+              <RestaurantCard resData={res} />
+            </Link>
           ))}
         </div>
       </div>
