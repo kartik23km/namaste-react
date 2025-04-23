@@ -82,3 +82,10 @@ li {
 a {
   text-decoration: none;
 }
+
+.user-card {
+  padding: 10px;
+  border: 1px black solid;
+  border-radius: 12px;
+  margin: 10px 0px;
+}
