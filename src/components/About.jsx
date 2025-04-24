@@ -14,7 +14,7 @@ class About extends React.Component {
   render() {
     // console.log("parent render");
     return (
-      <div>
+      <div className="m-5">
         <h1>About Us</h1>
         <UserClass
           name={"Kartik Malhotra (class component)"}

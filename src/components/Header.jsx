@@ -8,13 +8,13 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="header flex justify-between items-center p-5 border rounded-md m-5">
       <div className="logo-container">
-        <img className="logo" src={CDN_URL} />
+        <img className="logo w-20" src={CDN_URL} />
       </div>
       <div className="nav-container">
-        <ul className="nav-items">
-          <li>
+        <ul className="nav-items flex gap-10">
+          <li className="bg-blue-200 px-4 py-2 rounded-lg">
             <span>Online Status:</span>
             <span
               className="status"
@@ -24,20 +24,23 @@ const Header = () => {
               {onlineStatus ? "Online" : "Offline"}
             </span>{" "}
           </li>
-          <li>
+          <li className="bg-amber-100 px-4 py-2 rounded-lg cursor-pointer hover:shadow-lg">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="bg-amber-100 px-4 py-2 rounded-lg cursor-pointer hover:shadow-lg">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="bg-amber-100 px-4 py-2 rounded-lg cursor-pointer hover:shadow-lg">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="bg-amber-100 px-4 py-2 rounded-lg cursor-pointer hover:shadow-lg">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="bg-amber-100 px-4 py-2 rounded-lg  hover:shadow-lg cursor-pointer">
+            Cart
+          </li>
           <button
+            className="bg-blue-200 px-4 py-2 rounded-lg  hover:shadow-lg cursor-pointer"
             onClick={() => setBtnName(btnName === "Login" ? "Logout" : "Login")}
           >
             {btnName}

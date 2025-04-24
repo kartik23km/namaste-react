@@ -31,7 +31,7 @@ class UserClass extends React.Component {
     // const { count } = this.state;
     // console.log("child render");
     return (
-      <div className="user-card">
+      <div className="user-card flex items-center border my-5 px-4 py-2 w-1/5 rounded-lg gap-5">
         {/* <p>Count: {count}</p>
         <button
           onClick={() => {
@@ -42,10 +42,12 @@ class UserClass extends React.Component {
         >
           Increase Count
         </button> */}
-        <img src={avatar_url} />
-        <h1>{name}</h1>
-        <h2>Location: {location}</h2>
-        <h2>Contact: @kartik__malhotra</h2>
+        <img className="w-20 h-20" src={avatar_url} />
+        <div>
+          <h1>{name}</h1>
+          <h2>Location: {location}</h2>
+          <h2>Contact: @kartik__malhotra</h2>
+        </div>
       </div>
     );
   }
