@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { MENU_API } from "./utils/constants";
 import useRestaurantMenu from "./utils/useResautrantMenu";
+import Accordion from "./Accordion";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
-  const resData = useRestaurantMenu(resId);
+  const categoryData = useRestaurantMenu(resId);
 
-  return resData === null ? (
+  return categoryData === null ? (
     <div className="w-full h-20 bg-gray-300 animate-pulse m-5 rounded-lg"></div>
   ) : (
-    <div className="m-5 w-1/2">
-      <h1 className="border px-4 py-2 rounded-lg text-center shadow-lg bg-blue-200">
-        {resData[0]?.title}
-      </h1>
-      {resData[0]?.itemCards.map((el) => {
+    <div className="w-6/12 mx-auto">
+      {categoryData?.map((category, index) => {
         return (
-          <div
-            className="my-5 border px-4 py-2 rounded-lg w-1/2"
-            key={el?.card?.info?.id}
-          >
-            <h4>Name: {el?.card?.info?.name}</h4>
-            <p>Desc: {el?.card?.info?.description}</p>
-            <p>final Price: {el?.card?.info?.price / 100} rupees</p>
-            <p>Rating: {el?.card?.info?.ratings?.aggregatedRating?.rating}</p>
+          <div key={index} className=" p-3 flex flex-col justify-center">
+            <div className="font-bold flex items-center gap-2">
+              {category?.card?.card?.title}
+              <div>({category?.card?.card?.categories.length})</div>
+            </div>
+            {category?.card?.card?.categories.map((menu) => {
+              return <Accordion key={menu?.categoryId} menuData={menu} />;
+            })}
           </div>
         );
       })}

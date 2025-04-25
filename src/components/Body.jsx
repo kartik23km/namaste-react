@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { openRestaurants } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { API } from "./utils/constants";
 import { Link } from "react-router";
@@ -38,6 +38,8 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const OpenRestaurantComponent = openRestaurants(RestaurantCard);
 
   return listOfRestaurant.length === 0 ? (
     <div className="w-full p-5">
@@ -96,7 +98,11 @@ const Body = () => {
           {searchList.length === 0 && <h1>No Content Available</h1>}
           {searchList.map((res) => (
             <Link key={res.info.id} to={"/restaurant/" + res?.info?.id}>
-              <RestaurantCard resData={res} />
+              {res?.info?.availability?.opened ? (
+                <OpenRestaurantComponent restData={res} />
+              ) : (
+                <RestaurantCard resData={res} />
+              )}
             </Link>
           ))}
         </div>

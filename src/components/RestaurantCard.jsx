@@ -1,9 +1,10 @@
 import { LOGO_URL } from "./utils/constants";
 
 const RestaurantCard = (props) => {
-  const { resData } = props;
+  const { restData } = props;
+
   const { name, avgRating, cloudinaryImageId, cuisines, costForTwo, sla } =
-    resData?.info;
+    restData?.info;
 
   return (
     <div className="res-card border p-2 rounded-lg m-2 w-80 h-fit flex flex-col justify-center">
@@ -19,6 +20,19 @@ const RestaurantCard = (props) => {
       <h4>{costForTwo}</h4>
     </div>
   );
+};
+
+export const openRestaurants = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <>
+        <div className="absolute bg-black p-2 text-white rounded-lg m-2">
+          Open Now
+        </div>
+        <RestaurantCard {...props} />
+      </>
+    );
+  };
 };
 
 export default RestaurantCard;

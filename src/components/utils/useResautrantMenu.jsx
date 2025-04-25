@@ -10,12 +10,17 @@ const useRestaurantMenu = (resId) => {
   const fetchData = async () => {
     const data = await fetch(MENU_API + resId);
     const json = await data.json();
-    setResData(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card
-        ?.card?.categories ||
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-          ?.card?.categories
+
+    const categoryData =
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+    const filteredCategory = categoryData.filter(
+      (category) =>
+        category?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
+
+    setResData(filteredCategory);
   };
 
   return resData;
