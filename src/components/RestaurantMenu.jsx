@@ -1,9 +1,11 @@
 import { useParams } from "react-router";
 import useRestaurantMenu from "./utils/useResautrantMenu";
 import Accordion from "./Accordion";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
 
   const categoryData = useRestaurantMenu(resId);
 
@@ -18,8 +20,17 @@ const RestaurantMenu = () => {
               {category?.card?.card?.title}
               <div>({category?.card?.card?.categories.length})</div>
             </div>
-            {category?.card?.card?.categories.map((menu) => {
-              return <Accordion key={menu?.categoryId} menuData={menu} />;
+            {category?.card?.card?.categories.map((menu, index) => {
+              console.log(menu);
+
+              return (
+                <Accordion
+                  key={menu?.categoryId}
+                  menuData={menu}
+                  open={index === showIndex ? true : false}
+                  setShowIndex={() => setShowIndex(index)}
+                />
+              );
             })}
           </div>
         );

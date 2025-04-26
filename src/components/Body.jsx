@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard, { openRestaurants } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { API } from "./utils/constants";
 import { Link } from "react-router";
+import UserContext from "./utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -41,6 +42,8 @@ const Body = () => {
 
   const OpenRestaurantComponent = openRestaurants(RestaurantCard);
 
+  const { setUserName, userName } = useContext(UserContext);
+
   return listOfRestaurant.length === 0 ? (
     <div className="w-full p-5">
       <div className="flex gap-2">
@@ -67,10 +70,7 @@ const Body = () => {
             type="text"
             placeholder="Search"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSearch();
-            }}
+            onChange={(e) => setUserName(e.target.value)}
           />
           <button
             className="bg-red-300 px-4 py-2 rounded-lg cursor-pointer hover:shadow-lg"
@@ -92,6 +92,13 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+          <input
+            className="border px-4 py-2 w-lg rounded-md mr-2"
+            type="text"
+            placeholder="Change Username"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
         <p>**Some items may break due to uneven API response**</p>
         <div className="res-container flex flex-wrap">
