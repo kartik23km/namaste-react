@@ -15,3 +15,12 @@ return (
      )
 
 }
+
+Redux/RTK
+
+- install @reduxjs/toolkit and react-redux
+- build store
+- connect our app to store
+- slice (cart)
+- dispatch (action)
+- selector

@@ -21,8 +21,6 @@ const RestaurantMenu = () => {
               <div>({category?.card?.card?.categories.length})</div>
             </div>
             {category?.card?.card?.categories.map((menu, index) => {
-              console.log(menu);
-
               return (
                 <Accordion
                   key={menu?.categoryId}

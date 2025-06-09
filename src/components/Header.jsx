@@ -3,12 +3,15 @@ import { CDN_URL } from "./utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import UserContext from "./utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
 
   const { userName } = useContext(UserContext);
+  const cart = useSelector((store) => store.cart.items);
+  console.log(cart);
 
   return (
     <div className="header flex justify-between items-center p-5 rounded-md m-5 bg-pink-100 shadow-lg">
@@ -40,7 +43,7 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="bg-amber-100 px-4 py-2 rounded-lg  hover:shadow-lg cursor-pointer">
-            Cart
+            <Link to="/cart"> Cart - {cart.length}</Link>
           </li>
           <button
             className="bg-blue-200 px-4 py-2 rounded-lg  hover:shadow-lg cursor-pointer"
