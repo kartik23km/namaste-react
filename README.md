@@ -24,3 +24,9 @@ Redux/RTK
 - slice (cart)
 - dispatch (action)
 - selector
+
+Types of testing
+
+- Unit testing
+- Integration Testing
+- End to end testing - e2e testing
