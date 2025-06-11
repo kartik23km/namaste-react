@@ -11,7 +11,6 @@ const Header = () => {
 
   const { userName } = useContext(UserContext);
   const cart = useSelector((store) => store.cart.items);
-  console.log(cart);
 
   return (
     <div className="header flex justify-between items-center p-5 rounded-md m-5 bg-pink-100 shadow-lg">

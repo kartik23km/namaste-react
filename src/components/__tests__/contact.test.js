@@ -1,5 +1,5 @@
 import Contact from "../Contact"
-const { render, screen } = require("@testing-library/react")
+import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 
 describe("Should load contact us component", () => {
